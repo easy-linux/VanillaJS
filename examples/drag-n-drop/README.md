@@ -3,6 +3,7 @@
 ## Как пользоваться:
 
  npm install
+
  npm run start
  
 
