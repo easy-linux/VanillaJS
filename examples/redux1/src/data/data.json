@@ -1,0 +1,16 @@
+[
+    { "id": "100", "name": "user1", "salary": 1000, "position": "dev", "department": "dep1"},
+    { "id": "200", "name": "user2", "salary": 1000, "position": "acc", "department": "dep1"},
+    { "id": "300", "name": "user3", "salary": 2000, "position": "dev", "department": "dep1"},
+    { "id": "400", "name": "user4", "salary": 1000, "position": "man", "department": "dep2"},
+    { "id": "500", "name": "user5", "salary": 3000, "position": "dev", "department": "dep2"},
+    { "id": "600", "name": "user6", "salary": 3000, "position": "dev", "department": "dep3"},
+    { "id": "700", "name": "user7", "salary": 1000, "position": "acc", "department": "dep4"},
+    { "id": "800", "name": "user8", "salary": 1500, "position": "qa", "department": "dep4"},
+    { "id": "900", "name": "user9", "salary": 1000, "position": "qa", "department": "dep4"},
+    { "id": "101", "name": "user10", "salary": 4500, "position": "dev", "department": "dep10"},
+    { "id": "102", "name": "user11", "salary": 1500, "position": "dev", "department": "dep10"},
+    { "id": "103", "name": "user12", "salary": 1060, "position": "dev", "department": "dep10"}
+    
+]
+
