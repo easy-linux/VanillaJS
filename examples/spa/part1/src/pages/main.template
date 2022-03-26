@@ -1,0 +1,1 @@
+<div>Main template (new content)</div>
