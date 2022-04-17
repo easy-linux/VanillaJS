@@ -22,13 +22,15 @@
 
 ## Видео с объяснением как это все работает здесь:
 
-https://youtu.be/1ZrinH485Dg
+https://youtu.be/pV_70oxkKCA
 
 ## Предыдущие серии:
 
 - https://youtu.be/eqAefmCqA6M - часть 1
 
 - https://youtu.be/HKFEUBXuAxc - часть 2
+
+- https://youtu.be/1ZrinH485Dg - часть 3
 
 
 ## Другие видео по Vanilla js:
