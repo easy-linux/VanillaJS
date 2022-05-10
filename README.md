@@ -36,6 +36,19 @@ Drag-n-Drop элементов DOM на VanillaJS
 
 https://youtu.be/sqeM4vLuKX8
 
+Сериал "SPA приложение на VanillaJS"
+
+https://www.youtube.com/watch?v=eqAefmCqA6M&list=PLCh6bwt6jth_fkFrU15eyY6Hv18NuWcwa
+
+Эффект падающего снега
+
+https://youtu.be/3xk4ldXe4YI - часть 1
+https://youtu.be/S4CagEvz4WE - часть 2
+
+Библиотека Redux и простой JS:
+
+https://youtu.be/snkfFLtdXRA
+
 
 ## Полезные ссылки
 
