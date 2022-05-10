@@ -1,0 +1,27 @@
+<style>
+   .top-container{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      border: 1px solid blue;
+      border-radius: 8px;
+   }
+   .top-container .block{
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin: 20px;
+      background: linear-gradient(to top, #0f0, #060);
+      text-width: bold;
+      cursor: pointer;
+   }
+   .top-container .block:hover{
+       color: #ccc;
+   }
+
+</style>
+<div class="top-container">
+   ${ [...Array(10).keys()].map((block)=>{
+       return `<div class="block">Top block ${block+1}</div>`
+   }).join('\n')}
+</div>

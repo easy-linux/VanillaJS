@@ -1,0 +1,48 @@
+<style>
+   .left-container{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      border: 1px solid red;
+      border-radius: 8px;
+      
+   }
+   .left-container .block{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      margin: 10px;
+      border: 1px solid #ccc;      
+      border-radius: 8px;
+      opacity: 0.5;
+      background: linear-gradient(to bottom right, blue, pink);
+      transition: flex-direction 0.5s, transform 0.5s, opacity 0.5s;
+   }
+
+   .left-container .block:hover{
+       flex-direction: row-reverse;
+       transform: rotate(360deg);
+       opacity: 1;
+   }
+
+   .left-container .block .avatar{
+       width: 15px;
+       height: 15px;
+       padding: 10px;
+       border: 1px solid #ccc;
+       background-color: #cfc;
+       border-radius: 50%;
+       margin: 10px;
+       font-size: 10px;
+       font-family: arial;
+   }
+</style>
+<div class="left-container">
+   ${ [...Array(20).keys()].map((block)=>{
+       return `<div class="block">
+       <div class="avatar">Left ${block+1}</div>
+       <div class="text">Left ${block+1}</div>
+       </div>`
+   }).join('\n')}
+</div>

@@ -1,0 +1,2 @@
+<main-nav type="user" search="${props.query || ''}"></main-nav>
+<list-component list-type="user" search="${props.query || ''}"></list-component>

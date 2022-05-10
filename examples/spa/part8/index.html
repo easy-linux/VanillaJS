@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base href=".">
+    <meta charset="utf-8">
+    <title>SPA on VanillaJs (based on Web Components)</title>
+</head>
+
+<body>
+    <h1 class="page-header">SPA on VanillaJs (based on Web Components)</h1>
+    <div id="app"></div>
+    <script src='/src/index.js' type='module'></script>
+
+    <template id="modal-dialog-template">
+        <style>
+            .modal-dialog {
+                width: 100vw;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: fixed;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                z-index: 999;
+                display: none;
+            }
+
+            .modal-dialog.opened {
+                display: flex;
+            }
+
+            .modal-dialog-backdrop {
+                width: 100vw;
+                height: 100vh;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background-color: rgba(33, 33, 33, 0.5)
+            }
+
+            .modal-dialog-wrapper {
+                border: 1px solid #ccc;
+                background-color: #fff;
+                overflow: hidden;
+                border-radius: 8px;
+                font-size: 14px;
+                font-family: arial;
+                z-index: 1;
+            }
+
+            .modal-dialog-title,
+            .modal-dialog-message,
+            .buttons {
+                text-align: center;
+                padding: 10px;
+            }
+
+            .buttons {
+                border-top: 1px solid #ccc;
+            }
+
+            .cancel-button.hide {
+                display: none;
+            }
+
+            .modal-dialog-wrapper .modal-dialog-title {
+                background-color: #ccc;
+                color: #fff;
+            }
+        </style>
+        <div class="modal-dialog">
+            <div class="modal-dialog-backdrop">
+            </div>
+            <div class="modal-dialog-wrapper">
+
+                <div class="modal-dialog-title">
+                    <slot name="title"></slot>
+                </div>
+                <div class="modal-dialog-message">
+                    <slot name="message"></slot>
+                </div>
+
+                <div class="buttons">
+                    <button class='ok-button'>Ok</button>
+                    <button class='cancel-button'>Cancel</button>
+                </div>
+            </div>
+        </div>
+    </template>
+</body>
+
+</html>

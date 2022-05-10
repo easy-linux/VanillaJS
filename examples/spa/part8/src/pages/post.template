@@ -1,0 +1,3 @@
+<main-nav type="post"></main-nav>
+<post-detail post="${props.post}"></post-detail>
+<list-component list-type="comment" post="${props.post}"></list-component>
