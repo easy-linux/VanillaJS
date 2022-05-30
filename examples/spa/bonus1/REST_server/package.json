@@ -1,0 +1,32 @@
+{
+  "name": "RESTapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mongo-start": "mongod --config ./mongo-config.conf --dbpath ./mongodb --logpath ./mongo.log"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/express": "^1.1.0",
+    "@fastify/jwt": "^5.0.1",
+    "@fastify/mongodb": "^5.0.0",
+    "@fastify/static": "^5.0.2",
+    "@fastify/swagger": "^6.0.1",
+    "cors": "^2.8.5",
+    "dns-prefetch-control": "^0.3.0",
+    "fastify": "^3.29.0",
+    "fastify-jwt": "^4.2.0",
+    "fastify-mysql": "^2.2.0",
+    "fastify-swagger": "^5.2.0",
+    "frameguard": "^4.0.0",
+    "hide-powered-by": "^1.1.0",
+    "hsts": "^2.2.0",
+    "ienoopen": "^1.1.0",
+    "joi-to-json": "^2.2.4",
+    "x-xss-protection": "^2.0.0"
+  }
+}
