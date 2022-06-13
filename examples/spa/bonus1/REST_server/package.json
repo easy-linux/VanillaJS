@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "mongo-start": "mongod --config ./mongo-config.conf --dbpath ./mongodb --logpath ./mongo.log"
+    "mongo-start": "mongod --config ./mongo-config.conf --dbpath ./mongodb --logpath ./mongo.log",
+    "generate": "node ./scripts/generateDb.js",
+    "server": "concurrently \"npm run mongo-start\"  \"npm run generate\" \"node ./server.js\""
   },
   "keywords": [],
   "author": "",
@@ -28,5 +30,8 @@
     "ienoopen": "^1.1.0",
     "joi-to-json": "^2.2.4",
     "x-xss-protection": "^2.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.1"
   }
 }

@@ -1,0 +1,38 @@
+<style>
+   .right-container{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      border: 1px solid red;
+      border-radius: 8px;
+   }
+   .right-container .block{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      
+   }
+   .right-container .block .form{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       flex-direction: column;
+       padding: 10px;
+       border: 1px solid #ccc;
+       
+       border-radius: 8px;
+       margin: 10px;
+       font-size: 10px;
+       font-family: arial;
+   }
+</style>
+
+<div class="right-container">
+   ${ [...Array(12).keys()].map((block)=>{
+       return `<div class="block">
+           <fake-form block="${block+1}"></fake-form>
+       </div>`
+   }).join('\n')}
+</div>
+

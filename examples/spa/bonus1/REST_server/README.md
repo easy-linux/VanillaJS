@@ -22,9 +22,15 @@ https://github.com/fastify/fastify-swagger
     npm install
 
 
+#### Старт всего с генерацией базы данных:
+
+    npm run server
+
+
 #### Запуск REST сервера
 
     node ./server.js
+
 
 
 
