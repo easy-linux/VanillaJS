@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Worker</title>
+  </head>
+  <body>
+    <div class="block">
+      <div class="hover-block">
+        <div>Block</div>
+      </div>
+    </div>
+<div>
+    <button id="btn1">Todo</button>
+    <button id="btn2">User</button>
+</div>
+<pre id="result"></pre>
+<button id="btn3">Recreate Worker</button>
+<div>
+    <textarea id="textblock" cols="80" rows="35">
+      function answer(data) {
+        postMessage(data);
+      }
+      
+      onmessage = (event) => {
+        if (event?.data?.type === 'todo') {
+          getTodo(event.data.id)
+        } else if (event?.data?.type === 'user') {
+          getUser(event.data.id)
+        }
+      };
+      
+      const getTodo = (id) => {
+        fetch('https://jsonplaceholder.typicode.com/todos/'+id)
+        .then(responce=>responce.json())
+        .then((todo) => {
+          answer({ todo });
+        })
+        .catch(e => {
+            console.log(e)
+        })
+      }
+
+      const getUser = (id) => {
+        fetch('https://jsonplaceholder.typicode.com/users/'+id)
+        .then(responce=>responce.json())
+        .then((user) => {
+          answer({user});
+        })
+        .catch(e => {
+            console.log(e)
+        })
+      }
+      
+    </textarea>
+</div>
+    <script type="module" src="./index2.js"></script>
+    <style>
+      @keyframes slidein {
+        from {
+          margin-left: 100%;
+          width: 300%;
+        }
+
+        to {
+          margin-left: 0%;
+          width: 100%;
+        }
+      }
+
+      .block {
+        display: flex;
+        flex-direction: column;
+        align-items: initial;
+        animation: 1s linear 1s infinite alternate slidein;
+      }
+
+      .hover-block {
+        display: flex;
+        width: 100px;
+        height: 100px;
+        justify-content: center;
+        align-items: center;
+        background-color: blue;
+      }
+
+      .hover-block:hover {
+        background-color: red;
+      }
+
+      .hover-block div {
+        color: #fff;
+      }
+
+      #btn {
+        margin: 10px;
+      }
+    </style>
+  </body>
+</html>
