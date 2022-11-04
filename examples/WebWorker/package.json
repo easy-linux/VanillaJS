@@ -1,7 +1,6 @@
 {
   "name": "micromacro",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "vite",
@@ -13,5 +12,22 @@
   "license": "ISC",
   "devDependencies": {
     "vite": "^3.1.4"
-  }
+  },
+  "dependencies": {
+    "esbuild-darwin-64": "^0.15.10",
+    "esbuild": "^0.15.10",
+    "function-bind": "^1.1.1",
+    "has": "^1.0.3",
+    "fsevents": "^2.3.2",
+    "is-core-module": "^2.10.0",
+    "picocolors": "^1.0.0",
+    "nanoid": "^3.3.4",
+    "path-parse": "^1.0.7",
+    "source-map-js": "^1.0.2",
+    "postcss": "^8.4.17",
+    "resolve": "^1.22.1",
+    "rollup": "^2.78.1",
+    "supports-preserve-symlinks-flag": "^1.0.0"
+  },
+  "description": ""
 }
