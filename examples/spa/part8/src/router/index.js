@@ -84,6 +84,7 @@ export const getRouterParams = () => {
 
 const initRouter = () => {
     window.addEventListener('popstate', e => {
+        debugger
         render(new URL(window.location.href).pathname)
     })
     document.querySelectorAll('[href^="/"]').forEach(el => {
@@ -93,7 +94,9 @@ const initRouter = () => {
             goTo(path)
         })
     })
+    debugger
     render(new URL(window.location.href).pathname)
 }
+
 
 export default initRouter
