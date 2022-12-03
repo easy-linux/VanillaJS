@@ -17,15 +17,7 @@ chrome.runtime.onInstalled.addListener(async () => {
   });
 });
 
-chrome.action.onClicked.addListener((tab) => {
-  console.log('worker1')
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    files: ['js/onclickAction.js']
-  });
-});
-
-chrome.commands.onCommand.addListener(function (command) {
+chrome.commands.onCommand.addListener( (command) => {
 
   chrome.tabs.update({}, async (tab) => {
     debugger

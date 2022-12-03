@@ -3,6 +3,7 @@
     "name": "EasyIt Extension",
     "description": "EasyIt Extension - the best solution for any issue",
     "version": "1.0",
+    "author": "EasyIT development",
     "action": {
         "default_popup": "html/popup.html",
         "default_icon": "icons/icon-32.png"
