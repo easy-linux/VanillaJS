@@ -1,0 +1,18 @@
+@import 'fonts.scss';
+
+body {
+     margin: 0;
+     padding: 0;
+}
+
+.page-header{
+    text-align: center;
+    font-family: 'Square Peg', cursive;
+    font-size: 50px;
+}
+
+.image-block{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
