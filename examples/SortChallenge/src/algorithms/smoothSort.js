@@ -43,4 +43,101 @@ const smoothSort = (arr) => {
     return arr;
 }
 
+export const smoothSortWithCompare = (array, compare) => {
+    const alpha = 1.5;
+    let p = 1, q = 1, r = 0, i;
+
+    function sift() {
+        if (r > 1) {
+            let temp = p + q - r;
+            if (temp > 1) {
+                siftDown(p, q, r - 1);
+                sift();
+                siftUp(temp, q, r - 1);
+                sift();
+                return;
+            }
+        }
+
+        if (q > 1) {
+            siftDown(p, q - 1, r);
+            sift();
+        }
+    }
+
+    function siftDown(p, q, r) {
+        for (i = p + Math.floor(q - p) / alpha; i < q; i = q + (q - i) * alpha) {
+            if (compare(array[i], array[i + 1]) > 0) {
+                swap(i, i + 1);
+                if (i > p) {
+                    for (let j = Math.floor(p + (i - p - 1) / alpha); j >= p; j--) {
+                        if (compare(array[j], array[j + 1]) > 0) {
+                            swap(j, j + 1);
+                        } else {
+                            break;
+                        }
+                    }
+                }
+                if (q - i > 1) {
+                    for (let j = Math.floor(i + 1 + (q - i - 2) / alpha); j < q; j++) {
+                        if (compare(array[j], array[j + 1]) > 0) {
+                            swap(j, j + 1);
+                        } else {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    function siftUp(p, q, r) {
+        for (i = q - Math.floor(q - r) / alpha; i > p; i = p + (i - p - 1) / alpha) {
+            if (compare(array[i - 1], array[i]) > 0) {
+                swap(i - 1, i);
+                if (i - p > 1) {
+                    for (let j = Math.floor(p + (i - p - 2) / alpha); j >= p; j--) {
+                        if (compare(array[j], array[j + 1]) > 0) {
+                            swap(j, j + 1);
+                        } else {
+                            break;
+                        }
+                    }
+                }
+                if (q - i > 0) {
+                    for (let j = Math.floor(i + 1 + (q - i - 1) / alpha); j < q; j++) {
+                        if (compare(array[j], array[j + 1]) > 0) {
+                            swap(j, j + 1);
+                        } else {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    function swap(i, j) {
+        let temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
+    while (q < array.length) {
+        r = p;
+        p = q;
+        q = p + (p - r) * alpha;
+        sift();
+    }
+
+    q = array.length;
+    while (p > 1) {
+        r = p;
+        p = q - (q - p) * alpha;
+        sift();
+    }
+}
+
+
+
 export default smoothSort

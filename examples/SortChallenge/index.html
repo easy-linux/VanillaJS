@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Алгоритмы сортировки в JS</title>
-    </head>
-    <body>
-        <h1 class="page-header">Сравнение алгоритмов сортировки</h1>
-        <canvas id="chart"></canvas>
-        <script src="/src/main.js" type="module"></script>
-    </body>
+
+<head>
+    <meta charset="utf-8">
+    <title>Алгоритмы сортировки в JS</title>
+    <style>
+        #check-boxes {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin: 5px 10px;
+        }
+
+        @media screen and (max-width: 800px) {
+            #check-boxes {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        @media screen and (max-width: 515px) {
+            #check-boxes {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="page-header">Сравнение алгоритмов сортировки</h1>
+    <form id="form">
+        <label for="input-count">Количество данных</label>
+        <input id="input-count" type="number" name="count" min="1000" step="100" value="1000" />
+        <div id="check-boxes"></div>
+        <button type="submit">Старт</button>
+    </form>
+    <canvas id="chart"></canvas>
+    <script src="/src/main.js" type="module"></script>
+</body>
+
 </html>

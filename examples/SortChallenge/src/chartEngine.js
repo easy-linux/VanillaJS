@@ -54,6 +54,13 @@ const myChart = new Chart(ctx, {
         beginAtZero: true,
       },
     },
+    animation: {
+      onComplete: () => {
+        console.log('animation OnComplete')
+        const event = new CustomEvent('animation-complete')
+        window.dispatchEvent(event)
+      },
+    }
   },
 });
 
@@ -62,3 +69,10 @@ export const addData = (label, value) => {
   myChart.data.datasets[0].data.push(value);
   myChart.update();
 };
+
+export const clearData = () => {
+  myChart.data.labels.length = 0;
+  myChart.data.datasets[0].data.length = 0;
+  myChart.update();
+};
+

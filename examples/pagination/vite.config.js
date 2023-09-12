@@ -3,7 +3,6 @@ import legacy from "@vitejs/plugin-legacy";
 import timeMarkPlugin from "./plugins/vite-plugin-timemark";
 
 export default defineConfig({
-  base: '',
   build: {
     target: "es2017",
     outDir: "build",
