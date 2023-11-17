@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EasyIT action popup</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .content h2,
+    .content .col {
+      white-space: nowrap;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+    }
+
+    .col {
+      padding: 10px 0;
+    }
+
+    .help-page, .settings-page {
+      cursor: pointer;
+    }
+
+    .help-page:hover, .settings-page:hover {
+      text-decoration: underline;
+    }
+
+    .clock-option{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .clock-ckeckbox{
+      margin-left: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content">
+    <h2>EasyIT Extension</h2>
+    <div class="row">
+      <div class="col settings-page">Настройки</div>
+    </div>
+    <div class="row">
+      <div class="col help-page">Открыть справку</div>
+    </div>
+    <div class="row">
+      <div class="col clock-option"><span>Показывать часы на странице</span><input type="checkbox" class="clock-ckeckbox" /></div>
+    </div>
+    <div class="row">
+      <div class="col change-background"><span>Установить цвет фона</span>
+        <input type="text" class="input-color" />
+        <input type="button" class="color-button" value="Ok" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col change-alert"><span>Напомнить через (минут):</span>
+        <input type="number" class="input-alert" />
+        <input type="button" class="alert-button" value="Ok" />
+      </div>
+    </div>
+  </div>
+  <script src="/js/popup.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+{
+    "manifest_version": 3,
+    "name": "EasyIt Extension",
+    "description": "EasyIt Extension - the best solution for any issue",
+    "version": "1.0",
+    "author": "EasyIT development",
+    "action": {
+        "default_popup": "html/popup.html",
+        "default_icon": "icons/icon-32.png"
+    },
+    "icons": {
+        "16": "icons/icon-16.png",
+        "32": "icons/icon-32.png",
+        "48": "icons/icon-48.png",
+        "128": "icons/icon-128.png"
+    },
+    "content_scripts": [
+        {
+            "js": [
+                "js/content.js"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ],
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "scripting",
+        "storage",
+        "alarms",
+        "notifications"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "background": {
+        "service_worker": "js/background.js"
+    },
+    "commands": {
+        "pin-current-tab": {
+          "suggested_key": {
+            "default": "Ctrl+Shift+Up",
+            "mac": "Command+Shift+Up"
+          },
+          "description": "Закрепить/открепить текущую вкладку"
+        },
+        "copy-current-tab": {
+          "suggested_key": {
+            "default": "Ctrl+Shift+Down",
+            "mac": "Command+Shift+Down"
+          },
+          "description": "Дублировать вкладку"
+        },
+        "move-to-first": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+Left",
+                "mac": "Command+Shift+Left"
+              },
+              "description": "Сделать вкладку первой"
+        },
+        "move-to-last": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+Right",
+                "mac": "Command+Shift+Right"
+              },
+              "description": "Сделать вкладку последней"
+        }
+    }
+}
