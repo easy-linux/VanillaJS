@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atimic API</title>
+    <style>
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        span {
+            margin: 0 5px;
+        }
+
+        .input {
+            width: 50px;
+        }
+
+        .input-cell {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #5900ff;
+            border-radius: 8px;
+        }
+
+        .cell {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #5900ff;
+            border-radius: 8px;
+            min-width: 50px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .output-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .label {
+            text-align: center;
+            padding: 10px 10px 0 10px;
+        }
+
+        .result0 {
+            border-color: #ff0062;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row row-expression">
+        <div class="input-cell">
+            <input class="expression exp1" value="value0 + value0"/>
+            <button data-type="worker1" class="expression-btn">Apply</button>
+        </div>
+        <div class="input-cell">
+            <input class="expression exp2" value="value0 * value0"/>
+            <button data-type="worker2" class="expression-btn">Apply</button>
+        </div>
+        <div class="input-cell">
+            <input class="expression exp3" value="value0 ** 4"/>
+            <button data-type="worker3" class="expression-btn">Apply</button>
+        </div>
+    </div>
+
+    <div class="row row-work">
+        <div class="input-cell">
+            <input class="input store-value" type="number" />
+            <button data-op="store">Store</button>
+        </div>
+        <div class="input-cell">
+            <input class="input add-value" type="number" />
+            <button data-op="add">Add</button>
+        </div>
+        <div class="input-cell">
+            <input class="input sub-value" type="number" />
+            <button data-op="sub">Sub</button>
+        </div>
+
+        <div class="input-cell">
+            <input class="input and-value" type="number" />
+            <button data-op="and">And</button>
+        </div>
+
+        <div class="input-cell">
+            <input class="input or-value" type="number" />
+            <button data-op="or">Or</button>
+        </div>
+
+        <div class="input-cell">
+            <input class="input xor-value" type="number" />
+            <button data-op="xor">Xor</button>
+        </div>
+
+        <div class="input-cell">
+            <span>IF</span>
+            <input class="input compareExchange-value" type="number" />
+            <span>TO</span>
+            <input class="input compareExchange-value2" type="number" />
+            <button data-op="compareExchange">CompareExchange</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="output-block">
+            <div class="label">INPUT (array[0][1][2])</div>
+            <div class="cell result0">0</div>
+        </div>
+        <div class="output-block">
+            <div class="label">WORKER1</div>
+            <div class="cell result1">0</div>
+        </div>
+        <div class="output-block">
+            <div class="label">WORKER2</div>
+            <div class="cell result2">0</div>
+        </div>
+        <div class="output-block">
+            <div class="label">WORKER3</div>
+            <div class="cell result3">0</div>
+        </div>
+    </div>
+
+    <script type="module" src="./src/index.js"></script>
+</body>
+
+</html>
