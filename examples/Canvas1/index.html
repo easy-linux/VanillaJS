@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Image editor</title>
+</head>
+
+<body>
+    <div class="buttons">
+        <div class="cell">
+            <label for="file-input" class="input-label">Выбрать файл</label>
+            <input type="file" id="file-input" accept="image/*" />
+        </div>
+        <div class="cell"><button id="reset-btn">Reset</button></div>
+        <div class="cell"><button id="download-btn">Download PNG</button></div>
+    </div>
+    <div class="buttons filters">
+    </div>
+    
+    <div id="container"></div>
+    <script src="/src/main.js" type="module"></script>
+</body>
+
+</html>

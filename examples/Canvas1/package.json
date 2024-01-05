@@ -1,0 +1,23 @@
+{
+  "name": "easy-it-vitejs-setup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview --port 3000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "browserslist": [
+    "cover 99.5%"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vitejs/plugin-legacy": "^5.2.0",
+    "sass": "^1.69.6",
+    "vite": "^5.0.10"
+  }
+}
