@@ -17,7 +17,6 @@ https://easy-linux.github.io/canvas1/
 
 
 ## Видео с объяснением как это все работает здесь:
-https://youtu.be/McP7wtZfMaw
 [![Видео здесь](https://img.youtube.com/vi/McP7wtZfMaw/0.jpg)](https://www.youtube.com/watch?v=McP7wtZfMaw)
 
 
