@@ -47,6 +47,7 @@ https://youtu.be/wIEauCguZGI
 Модульный принцип конфигурации проекта:
 
 https://youtu.be/fnUqyWyG5kk
+[![Видео здесь](https://img.youtube.com/vi/fnUqyWyG5kk/0.jpg)](https://www.youtube.com/watch?v=fnUqyWyG5kk)
 
 
 
