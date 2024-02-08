@@ -1,20 +1,36 @@
 # Пример как можно добававить эффект падающего снега на сайт с помощью только CSS и фоновых изображений
 
 
-Видео для данного примера здесь:
-https://youtu.be/3xk4ldXe4YI
+##Видео для данного примера здесь:
 
-## Полезные ссылки
+[![Видео здесь](https://img.youtube.com/vi/3xk4ldXe4YI/0.jpg)](https://www.youtube.com/watch?v=3xk4ldXe4YI)
 
-Самый правильный способ установки node и npm, настоятельно рекомендую устанавливать только так, это спасет Вас от лишних проблем в будущем.
 
-https://youtu.be/gP4OPx2vBoc 
+## Видео по vitejs
 
-Как настроить сборку проекта с помощью webpack
+[![Видео здесь](https://img.youtube.com/vi/wIEauCguZGI/0.jpg)](https://www.youtube.com/watch?v=wIEauCguZGI)
+[![Видео здесь](https://img.youtube.com/vi/t98Q9hliZZo/0.jpg)](https://www.youtube.com/watch?v=t98Q9hliZZo)
+[![Видео здесь](https://img.youtube.com/vi/aMzCDR_MHF0/0.jpg)](https://www.youtube.com/watch?v=aMzCDR_MHF0)
+[![Видео здесь](https://img.youtube.com/vi/TZN6dC7ZOs0/0.jpg)](https://www.youtube.com/watch?v=TZN6dC7ZOs0)
 
-https://youtu.be/unEl3Hezwpw
 
-Как настроить горячую перезагрузку (hot reloading) с помощью webpack
+## Полезные видео по настройке webpack:
 
-https://youtu.be/oOpzkF2nU0s 
+
+Минимальная конфигурация:
+
+[![Видео здесь](https://img.youtube.com/vi/unEl3Hezwpw/0.jpg)](https://www.youtube.com/watch?v=unEl3Hezwpw)
+
+Настройка горячей перезагрузки:
+
+[![Видео здесь](https://img.youtube.com/vi/oOpzkF2nU0s/0.jpg)](https://www.youtube.com/watch?v=oOpzkF2nU0s)
+
+Настройка сборки проекта с подгрузкой файлов css/scss/изображений:
+
+[![Видео здесь](https://img.youtube.com/vi/3B-NGZmMe-Y/0.jpg)](https://www.youtube.com/watch?v=3B-NGZmMe-Y)
+
+Модульный принцип конфигурации проекта:
+
+[![Видео здесь](https://img.youtube.com/vi/fnUqyWyG5kk/0.jpg)](https://www.youtube.com/watch?v=fnUqyWyG5kk)
+
 
