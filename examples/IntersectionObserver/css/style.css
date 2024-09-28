@@ -1,0 +1,201 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+#app {
+  padding: 2rem;
+  text-align: center;
+}
+
+#buttons {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#buttons button {
+  user-select: none;
+  border-radius: 3px;
+  border: 2px solid #ccc;
+}
+
+#buttons button.selected {
+  border: 2px solid #ff0000;
+}
+
+#content {
+  padding: 10px;
+}
+
+.users-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.container1 {
+  width: 4000px;
+  height: 2000px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container2 {
+  width: 400px;
+  height: 400px;
+  margin: 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #646cff;
+}
+
+.container3 {
+  width: 400px;
+  height: 400px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: block;
+  overflow: auto;
+  margin: 50px;
+}
+
+.container4 {
+  width: 4000px;
+  height: 2000px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: block;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  background-color: #646cff;
+  
+}
+.block {
+  width: 150px;
+  height: 100px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  place-items: center;
+  background-color: #babdec;
+}
+
+.block2 {
+  width: 150px;
+  height: 100px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  place-items: center;
+  background-color: #babdec;
+  position: absolute;
+  top: 1000px;
+  left: 1000px;
+}
+
+.label{
+  position: fixed;
+  left: 0;
+  top: 0;
+  font-size: 20px;
+  background-color: #babdec;
+  font-weight: bold;
+  padding: 20px;
+  opacity: 0.8;
+  color: red;
+}
+
+.block.visible,
+.block2.visible{
+  background-color: #12ed28;
+  color: #535bf2;
+}
+
+.user,
+.post {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #242424;
+  padding: 10px;
+}
+
+.user .user-info {
+  display: flex;
+}
+
+.user .avatar {
+  width: 100px;
+  color: white;
+  fill: white;
+}
+
+.user .user-company {
+  width: 200px;
+}
+
+.user .text {
+  text-align: initial;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: scale(0.1);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: scale(1); /* Возвращаем элемент на место */
+}
+
+.post.sticky {
+  position: sticky;
+  top: 0;
+}
+
+.counter {
+  font-size: 20px;
+  font-weight: bold;
+}
