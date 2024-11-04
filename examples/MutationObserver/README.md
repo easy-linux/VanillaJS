@@ -1,4 +1,4 @@
-# Использование IntersectionObserver
+# Использование MutationObserver
 
 ## Как пользоваться
 
@@ -8,8 +8,7 @@
 ```
 
 ## Видео с объяснением как это все работает здесь:
-
-[![Видео здесь](https://img.youtube.com/vi/KKd0yA8J8JQ/0.jpg)](https://www.youtube.com/watch?v=KKd0yA8J8JQ)
+[![Видео здесь](https://img.youtube.com/vi/NkQkxkeRvto/0.jpg)](https://www.youtube.com/watch?v=NkQkxkeRvto)
 
 ## Еще по vitejs
 
