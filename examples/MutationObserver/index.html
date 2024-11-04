@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intersection Observer examples</title>
+  </head>
+  <body>
+    <div id="app">
+      <div id="buttons"></div>
+      <div class="controls">
+        <div class="controller">
+          <label for="width">Width:</label>
+          <input type="range" id="width" min="50" max="1000" value="400" />
+          <span id="widthValue">400px</span>
+        </div>
+
+        <div class="controller">
+          <label for="height">Height:</label>
+          <input type="range" id="height" min="50" max="600" value="300" />
+          <span id="heightValue">300px</span>
+        </div>
+
+        <div class="controller">
+          <label for="fontSize">Font Size:</label>
+          <input type="range" id="fontSize" min="10" max="50" value="20" />
+          <span id="fontSizeValue">16px</span>
+        </div>
+
+        <div class="controller">
+          <label for="fontFamily">Font Family:</label>
+          <select id="fontFamily">
+            <option value="Arial">Arial</option>
+            <option value="Courier New">Courier New</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Verdana">Verdana</option>
+          </select>
+        </div>
+
+        <div class="controller">
+          <label for="bgColor">Background Color:</label>
+          <input type="color" id="bgColor" value="#ffffff" />
+        </div>
+
+        <div class="controller">
+          <label for="textColor">Text Color:</label>
+          <input type="color" id="textColor" value="#000000" />
+        </div>
+
+        <div class="controller">
+          <label for="width">Counter:</label>
+          <input type="range" id="counter" min="1" max="1000" value="10">
+          <span id="counterValue">10</span>
+        </div>
+      </div>
+      <div id="container">
+        <canvas id="canvas"></canvas>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
