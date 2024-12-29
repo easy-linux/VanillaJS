@@ -1,0 +1,18 @@
+{
+  "name": "wasmrust",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "6.0.6",
+    "wasm_image_editor": "file:wasm_image_editor/pkg"
+  }
+}

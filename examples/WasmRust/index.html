@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WASM Image Editor</title>
+  <style>
+    #input-file {
+      margin-bottom: 5px;
+    }
+    .row-buttons{
+      display: grid;
+      grid-template-columns: repeat(4, 150px);
+      gap: 5px;
+      margin-bottom: 5px;
+    }
+    #output{
+      position: fixed;
+      top: 50px;
+      right: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <div>
+      <h1>WASM Image Editor</h1>
+      <input id="input-file"  type="file" accept="image/*" />
+      <div class="row-buttons">
+        <button data-type="reset">Reset</button>
+      </div>
+      <div class="row-buttons">
+        <button data-type="wasm" data-func="grayscale">Grayscale Wasm</button>
+        <button data-type="wasm" data-func="invert">Invert Colors Wasm</button>
+        <button data-type="wasm" data-func="blur">Blur Wasm</button>
+        <button data-type="wasm" data-func="filter">Filter Wasm</button>
+      </div>
+      <div class="row-buttons">
+        <button data-type="js" data-func="grayscale">Grayscale JS</button>
+        <button data-type="js" data-func="invert">Invert Colors JS</button>
+        <button data-type="js" data-func="blur">Blur JS</button>
+        <button data-type="js" data-func="filter">Filter JS</button>
+      </div>
+      <div>
+        <div>
+          <canvas id="canvas" />
+        </div>
+      </div>
+    </div>
+    <div id="output"></div>
+  </div>
+  <script type="module" src="./src/index.js"></script>
+</body>
+
+</html>
