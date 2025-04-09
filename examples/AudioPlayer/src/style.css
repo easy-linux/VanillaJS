@@ -1,0 +1,21 @@
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.input-holder {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.audio-holder {
+  display: grid;
+  grid-template-columns: auto 100px 300px;
+}
+
+#audio{
+  width: 100%;
+}
