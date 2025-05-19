@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="top-row">
+        <div>
+          <div>Display name:</div>
+          <div><input class="name-input" /></div>
+        </div>
+        <button class="name-button" title="Set name">👱🏻‍♂️</button>
+        <div>
+          <div>Message:</div>
+          <div><textarea class="message-input"></textarea></div>
+        </div>
+        <button class="message-button" title="Send to all">🔀</button>
+      </div>
+      <div class="chat-container">
+        <div class="chat"></div>
+        <div class="users-list"></div>
+      </div>
+    </div>
+    <script type="module" src="/src/client/main.js"></script>
+  </body>
+</html>
