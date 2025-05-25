@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SimplePeer Manual Connect</title>
+  <script src="https://unpkg.com/simple-peer@latest/simplepeer.min.js"></script>
+  <style>
+    textarea { width: 100%; height: 100px; margin-top: 5px; }
+  </style>
+</head>
+<body>
+  <h1>SimplePeer - Стример и Вьювер без сервера</h1>
+
+  <button id="startStreamer">Старт Стримера (инициатор)</button>
+  <button id="startViewer">Старт Вьювера (ответчик)</button>
+
+  <h2>Ваш сигнал</h2>
+  <textarea id="mySignal" readonly></textarea>
+
+  <h2>Вставьте сюда сигнал партнера</h2>
+  <textarea id="partnerSignal"></textarea>
+  <button id="connectToStream">Подключиться на стрим</button>
+  <button id="connectToViewer">Подключиться к клиенту</button>
+
+  <h2>Видео поток</h2>
+  <video id="video" autoplay playsinline muted style="width: 80%; background: black"></video>
+
+  <script>
+    let peerStream, peerClient;
+    const mySignal = document.getElementById('mySignal');
+    const partnerSignal = document.getElementById('partnerSignal');
+    const video = document.getElementById('video');
+
+    document.getElementById('startStreamer').onclick = async () => {
+      const stream = await navigator.mediaDevices.getDisplayMedia({ video: true, audio: false });
+
+      peerStream = new SimplePeer({
+        initiator: true,
+        trickle: false,
+        stream: stream
+      });
+
+      setupPeer(peerStream);
+    };
+
+    document.getElementById('startViewer').onclick = () => {
+      peerClient = new SimplePeer({
+        initiator: false,
+        trickle: false
+      });
+
+      setupPeer(peerClient);
+    };
+
+    function setupPeer(peer) {
+      peer.on('signal', data => {
+        mySignal.value = JSON.stringify(data);
+      });
+
+      peer.on('connect', () => {
+        console.log('✅ Соединение установлено!');
+      });
+
+      peer.on('stream', remoteStream => {
+        console.log('📹 Поток получен');
+        video.srcObject = remoteStream;
+      });
+
+      peer.on('error', err => {
+        console.error('Ошибка:', err);
+      });
+    }
+
+    document.getElementById('connectToStream').onclick = () => {
+      const signal = JSON.parse(partnerSignal.value.trim());
+      peerClient.signal(signal);
+    };
+
+    document.getElementById('connectToViewer').onclick = () => {
+      const signal = JSON.parse(partnerSignal.value.trim());
+      peerStream.signal(signal);
+    };
+  </script>
+</body>
+</html>

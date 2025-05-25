@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Вьювер</title>
+  <script src="https://unpkg.com/simple-peer@latest/simplepeer.min.js"></script>
+</head>
+<body>
+  <ul id="streamList"></ul>
+  <input type="text" id="streamId" placeholder="Введите ID стрима">
+  <button id="joinStream">Присоединиться к стриму</button>
+  <video id="video" autoplay style="max-width: 100vw;"></video>
+  <script type="module" src="/src/viewer.js"></script>
+</body>
+</html>

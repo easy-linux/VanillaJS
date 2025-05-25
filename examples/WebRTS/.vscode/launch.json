@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "runtimeExecutable": "/Users/easy/.nvm/versions/node/v22.15.0/bin/node",
+            "program": "${workspaceFolder}/src/server/server.js"
+        }
+    ]
+}
