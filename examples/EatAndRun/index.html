@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game EatAndRun</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="set-name-panel">
+        <input
+          type="text"
+          class="imput-name"
+          placeholder="Enter your name"
+          maxlength="50" />
+        <button class="set-name-button">Set Name</button>
+        <label><input type="checkbox" class="checkbox-mouse" checked />Use mouse</label>
+      </div>
+      <canvas id="game" width="800" height="600"></canvas>
+    </div>
+    <div id="game-over-panel" >
+      <div class="modal-content">
+        <h2 class="modal-message">Game Over</h2>
+        <button class="close-button">Close</button>
+      </div>
+    </div>
+    <script type="module" src="/src/client/main.js"></script>
+  </body>
+</html>
