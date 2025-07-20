@@ -25,6 +25,81 @@ class EatAndRunBot {
     this.initializeWebSocketInterception();
   }
 
+  /**
+   * Декомпрессирует сообщение из нового протокола сжатия
+   * @param {Object} compressedMessage - сжатое сообщение
+   * @returns {Object} декомпрессированное сообщение
+   */
+  decompressMessage(compressedMessage) {
+    // Создаем копию сообщения для декомпрессии
+    const decompressed = JSON.parse(JSON.stringify(compressedMessage));
+
+    // Восстанавливаем полные имена свойств
+    if (decompressed.t) {
+      decompressed.type = decompressed.t;
+      delete decompressed.t;
+      if(decompressed.i){
+        decompressed.id = decompressed.i;
+        delete decompressed.i;
+      }
+      if(decompressed.p){
+        decompressed.players = decompressed.p.map(player => ({
+          id: player.i,                           // Короткий ID
+          x: player.x,                            // X координата
+          y: player.y,                            // Y координата
+          size: player.s,                         // s -> size
+          name: player.n,                         // n -> name
+          isBot: player.b                         // b -> isBot
+        }));
+        delete decompressed.p;
+      }
+      if(decompressed.b){
+        decompressed.bombs = decompressed.b.map(bomb => ({
+          id: bomb.i,                             // Короткий ID
+          x: bomb.x,                              // X координата
+          y: bomb.y,                              // Y координата
+          size: bomb.s                            // s -> size
+        }));
+        delete decompressed.b;
+      }
+      if(decompressed.f){
+        decompressed.food = decompressed.f.map(food => ({
+          id: food.i,                             // Короткий ID
+          x: food.x,                              // X координата
+          y: food.y,                              // Y координата
+          size: food.s                            // s -> size
+        }));
+        delete decompressed.f;
+      }
+      // Восстанавливаем таблицу лидеров
+      if (decompressed.l) {
+        decompressed.leaderBoard = decompressed.l.map(leader => ({
+          id: leader.i,                           // Короткий ID
+          name: leader.n,                         // n -> name
+          size: leader.s                          // s -> size
+        }));
+        delete decompressed.l;
+      }
+
+      // Восстанавливаем информацию об удаленных объектах
+      if (decompressed.r) {
+        decompressed.removed = {
+          players: decompressed.r.p.map(id => ({ id, removed: true })), // Короткий ID
+          food: decompressed.r.f.map(id => ({ id, removed: true })),    // Короткий ID
+          bombs: decompressed.r.b.map(id => ({ id, removed: true }))    // Короткий ID
+        };
+        delete decompressed.r;
+      }
+
+      // Восстанавливаем текстовое сообщение
+      if (decompressed.m) {
+        decompressed.message = decompressed.m;
+        delete decompressed.m;
+      }
+    }
+    return decompressed;
+  }
+
   initializeWebSocketInterception() {
     const self = this;
 
@@ -32,10 +107,15 @@ class EatAndRunBot {
       if (event.source !== window || !event.data) return;
       if (event.data.type === 'WS_CREATED') {
         console.log('🔍 WebSocket создан:', event.data.payload.url);
-        self.currentUserId = event.data.payload.url.match(/id=([0-9a-fA-F-]{36})/)[1];
+        // Извлекаем ID из URL - теперь это может быть короткий ID
+        const idMatch = event.data.payload.url.match(/id=([^&]+)/);
+        if (idMatch) {
+          self.currentUserId = idMatch[1];
+          console.log('ID игрока извлечен:', self.currentUserId);
+        }
       }
       if (event.data.type === 'WS_MESSAGE') {
-        // Обрабатываем сообщение от WebSocket  ;
+        // Обрабатываем сообщение от WebSocket
         this.handleWebSocketMessage({ data: event.data.payload })
       }
     });
@@ -44,44 +124,142 @@ class EatAndRunBot {
 
   handleWebSocketMessage(event) {
     if (!this.isActive) return;
-
     try {
       const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
-      if (data.type === 'gameUpdate') {
-        this.updateGameState(data);
+      
+      // Декомпрессируем сообщение если оно сжато
+      const decompressedData = this.decompressMessage(data);
+      
+      if (decompressedData.type === 'gameUpdate') {
+        this.updateGameState(decompressedData);
         this.makeDecision();
-      } else if (data.type === 'gameOver') {
+      } else if (decompressedData.type === 'gameOver') {
         // Отправляем сообщение чтобы закрыть модалку с результатом
         setTimeout(() => {
            window.postMessage({ type: "WS_CLOSE_MESSAGE" }, "*");
         }, 3000); // Задержка перед отправкой сообщения
+      } else if (decompressedData.type === 'gameRestarted') {
+        // Обрабатываем перезапуск игры
+        console.log('Игра перезапущена, очищаем состояние бота');
+        this.gameState = {
+          players: [],
+          food: [],
+          bombs: [],
+          myPlayer: null
+        };
+      } else if (decompressedData.type === 'init') {
+        // Обрабатываем инициализацию игры
+        console.log('Игра инициализирована, получаем данные игрока');
+        this.currentUserId = decompressedData.id;
       }
     } catch (error) {
+      console.error('Ошибка обработки WebSocket сообщения:', error);
       // Игнорируем ошибки парсинга
     }
   }
 
   updateGameState(data) {
     console.log('Обновление состояния игры:', data);
-    // Обновляем состояние игры на основе полученных данных
+    
+    // Обрабатываем дельта-обновления для игроков
     if (data.players) {
-      this.gameState.players = data.players;
-      // Находим своего игрока
-      this.gameState.myPlayer = data.players.find(p => p.id === this.currentUserId);
+      if (Array.isArray(data.players)) {
+        // Проверяем, является ли это дельта-обновлением по наличию удаленных элементов
+        if (data.removed && data.removed.players) {
+          // Дельта-обновление - применяем изменения
+          console.log('Дельта-обновление игроков:', data.players.length, 'игроков');
+          data.players.forEach(player => {
+            // Находим существующего игрока или создаем нового
+            const existingIndex = this.gameState.players.findIndex(p => p.id === player.id);
+            if (existingIndex >= 0) {
+              this.gameState.players[existingIndex] = player;
+            } else {
+              this.gameState.players.push(player);
+            }
+          });
+          // Удаляем удаленных игроков
+          data.removed.players.forEach(p => {
+            if (p.removed) {
+              this.gameState.players = this.gameState.players.filter(player => player.id !== p.id);
+            }
+          });
+        } else {
+          // Полное обновление
+          console.log('Полное обновление игроков:', data.players.length, 'игроков');
+          this.gameState.players = data.players;
+        }
+      }
     }
-
+    
+    // Обрабатываем дельта-обновления для еды
     if (data.food) {
-      this.gameState.food = data.food;
+      if (Array.isArray(data.food)) {
+        // Проверяем, является ли это дельта-обновлением по наличию удаленных элементов
+        if (data.removed && data.removed.food) {
+          // Дельта-обновление - применяем изменения
+          console.log('Дельта-обновление еды:', data.food.length, 'объектов еды');
+          data.food.forEach(f => {
+            // Находим существующую еду или создаем новую
+            const existingIndex = this.gameState.food.findIndex(food => food.id === f.id);
+            if (existingIndex >= 0) {
+              this.gameState.food[existingIndex] = f;
+            } else {
+              this.gameState.food.push(f);
+            }
+          });
+          // Удаляем удаленную еду
+          data.removed.food.forEach(f => {
+            if (f.removed) {
+              this.gameState.food = this.gameState.food.filter(food => food.id !== f.id);
+            }
+          });
+        } else {
+          // Полное обновление
+          console.log('Полное обновление еды:', data.food.length, 'объектов еды');
+          this.gameState.food = data.food;
+        }
+      }
     }
-
+    
+    // Обрабатываем дельта-обновления для бомб
     if (data.bombs) {
-      this.gameState.bombs = data.bombs;
+      if (Array.isArray(data.bombs)) {
+        // Проверяем, является ли это дельта-обновлением по наличию удаленных элементов
+        if (data.removed && data.removed.bombs) {
+          // Дельта-обновление - применяем изменения
+          console.log('Дельта-обновление бомб:', data.bombs.length, 'бомб');
+          data.bombs.forEach(b => {
+            // Находим существующую бомбу или создаем новую
+            const existingIndex = this.gameState.bombs.findIndex(bomb => bomb.id === b.id);
+            if (existingIndex >= 0) {
+              this.gameState.bombs[existingIndex] = b;
+            } else {
+              this.gameState.bombs.push(b);
+            }
+          });
+          // Удаляем удаленные бомбы
+          data.removed.bombs.forEach(b => {
+            if (b.removed) {
+              this.gameState.bombs = this.gameState.bombs.filter(bomb => bomb.id !== b.id);
+            }
+          });
+        } else {
+          // Полное обновление
+          console.log('Полное обновление бомб:', data.bombs.length, 'бомб');
+          this.gameState.bombs = data.bombs;
+        }
+      }
     }
-
-    // Альтернативные форматы данных
-    // Если данные приходят в другом формате, например, с полем payload
-    if (data.type === 'gameUpdate') {
-      this.gameState = { ...this.gameState, ...data.payload };
+    
+    // Находим своего игрока (используем короткий ID)
+    if (this.currentUserId) {
+      // Ищем игрока по короткому ID
+      this.gameState.myPlayer = this.gameState.players.find(p => p.id === this.currentUserId);
+      
+      // Если не нашли по короткому ID, попробуем найти по полному UUID
+      if (!this.gameState.myPlayer) {
+        this.gameState.myPlayer = this.gameState.players.find(p => p.id && p.id.includes(this.currentUserId));
+      }
     }
   }
 
@@ -349,8 +527,12 @@ class EatAndRunBot {
     this.isActive = true;
 
     if (window.SOCKET) {
-      debugger
-      this.currentUserId = window.SOCKET.url.match(/id=(\d+)/)[1];
+      // Извлекаем ID из URL WebSocket - теперь это может быть короткий ID
+      const idMatch = window.SOCKET.url.match(/id=([^&]+)/);
+      if (idMatch) {
+        this.currentUserId = idMatch[1];
+        console.log('ID игрока извлечен из существующего WebSocket:', this.currentUserId);
+      }
       this.gameWebSocket = window.SOCKET;
       window.SOCKET.addEventListener('message', this.handleWebSocketMessage);
       console.log('Используем существующий WebSocket:', this.gameWebSocket);
