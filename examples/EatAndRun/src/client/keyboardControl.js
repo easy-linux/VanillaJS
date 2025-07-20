@@ -1,24 +1,60 @@
+/**
+ * @module Client/KeyboardControl
+ * @category Client
+ * @description Модуль управления игрой с клавиатуры
+ * 
+ * Этот модуль содержит:
+ * - Обработчики нажатия и отпускания клавиш стрелок
+ * - Отправку команд движения на сервер
+ * - Управление скоростью движения игрока
+ * - Интеграцию с WebSocket для отправки команд
+ * 
+ * @example
+ * import './keyboardControl.js';
+ * 
+ * // Модуль автоматически подключается и обрабатывает:
+ * // - ArrowUp: движение вверх (vy = -2)
+ * // - ArrowDown: движение вниз (vy = 2)
+ * // - ArrowLeft: движение влево (vx = -2)
+ * // - ArrowRight: движение вправо (vx = 2)
+ * // - Отпускание клавиш: остановка движения
+ */
+
 import { messageTypes } from "../constants";
 import { sendMessage } from "./websocket";
 
+// Текущая скорость движения игрока
+let vx = 0; // Скорость по оси X
+let vy = 0; // Скорость по оси Y
 
-let vx = 0;
-let vy = 0;
-
+/**
+ * Обработчик нажатия клавиш
+ * Устанавливает скорость движения в зависимости от нажатой клавиши
+ * Отправляет команду движения на сервер
+ */
 document.addEventListener('keydown', (e) => {
-    if(e.key === 'ArrowUp') vy = -2;
-    if(e.key === 'ArrowDown') vy = 2;
-    if(e.key === 'ArrowLeft') vx = -2;
-    if(e.key === 'ArrowRight') vx = 2;
+    // Устанавливаем скорость в зависимости от нажатой клавиши
+    if(e.key === 'ArrowUp') vy = -2;      // Движение вверх
+    if(e.key === 'ArrowDown') vy = 2;     // Движение вниз
+    if(e.key === 'ArrowLeft') vx = -2;    // Движение влево
+    if(e.key === 'ArrowRight') vx = 2;    // Движение вправо
 
+    // Отправляем команду движения на сервер
     sendMessage(JSON.stringify({type: messageTypes.MOVE, vx, vy}))
 });
 
+/**
+ * Обработчик отпускания клавиш
+ * Сбрасывает скорость движения при отпускании клавиши
+ * Отправляет обновленную команду движения на сервер
+ */
 document.addEventListener('keyup', (e) => {
-    if(e.key === 'ArrowUp') vy = 0;
-    if(e.key === 'ArrowDown') vy = 0;
-    if(e.key === 'ArrowLeft') vx = 0;
-    if(e.key === 'ArrowRight') vx = 0;
+    // Сбрасываем скорость при отпускании клавиши
+    if(e.key === 'ArrowUp') vy = 0;       // Остановка движения по Y
+    if(e.key === 'ArrowDown') vy = 0;     // Остановка движения по Y
+    if(e.key === 'ArrowLeft') vx = 0;     // Остановка движения по X
+    if(e.key === 'ArrowRight') vx = 0;    // Остановка движения по X
 
+    // Отправляем обновленную команду движения на сервер
     sendMessage(JSON.stringify({type: messageTypes.MOVE, vx, vy}))
 });

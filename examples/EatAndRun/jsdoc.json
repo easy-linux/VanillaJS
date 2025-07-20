@@ -1,0 +1,18 @@
+{
+  "source": {
+    "include": ["src", "server.js"]
+  },
+  "opts": {
+    "readme": "./README.md",
+    "template": "node_modules/better-docs",
+    "destination": "./public/docs",
+    "recurse": true
+  },
+  "tags": {
+    "allowUnknownTags": ["category"]
+  },
+  "plugins": [
+    "plugins/markdown",
+    "node_modules/better-docs/category"
+  ]
+}

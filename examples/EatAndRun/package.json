@@ -1,9 +1,10 @@
 {
   "name": "eatandrun",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
+    "docs": "jsdoc -c jsdoc.json",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
@@ -12,7 +13,10 @@
   "devDependencies": {
     "@fastify/static": "^8.2.0",
     "@fastify/websocket": "^11.1.0",
+    "better-docs": "^2.7.3",
+    "docdash": "^2.0.2",
     "fastify": "^5.4.0",
+    "jsdoc": "^4.0.4",
     "vite": "^6.3.5"
   }
 }
