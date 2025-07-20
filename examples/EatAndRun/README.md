@@ -10,6 +10,7 @@
 
 ```
 npm i
+npm run docs
 npm run server
 ```
 
@@ -18,6 +19,8 @@ http://localhost:3001/
 ```
 
 ## Видео с объяснением как это все работает здесь:
+
+[![Видео здесь](https://img.youtube.com/vi/6a_U_lwyzHQ/0.jpg)](https://www.youtube.com/watch?v=6a_U_lwyzHQ)
 
 [![Видео здесь](https://img.youtube.com/vi/dBTccUSORuA/0.jpg)](https://www.youtube.com/watch?v=dBTccUSORuA)
 
