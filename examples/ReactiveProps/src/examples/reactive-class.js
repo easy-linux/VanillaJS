@@ -55,7 +55,6 @@ class Reactive {
 
   // Геттер для количества подписчиков
   get subscriberCount() {
-    debugger
     return this._subscribers.length;
   }
 }
