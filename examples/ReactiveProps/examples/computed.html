@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вычисляемые свойства - Реактивные свойства</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html" class="back-link">← Назад к списку примеров</a>
+    
+    <div class="header">
+      <h1>🧮 Вычисляемые свойства</h1>
+      <p>Создание зависимых значений, которые автоматически пересчитываются при изменении зависимостей</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Демонстрация</h2>
+      <p>Этот пример показывает, как создать вычисляемые свойства, которые автоматически обновляются при изменении их зависимостей.</p>
+      
+      <div class="grid">
+        <div class="input-group">
+          <label for="firstNameInput">Имя:</label>
+          <input type="text" id="firstNameInput" value="John">
+        </div>
+
+        <div class="input-group">
+          <label for="lastNameInput">Фамилия:</label>
+          <input type="text" id="lastNameInput" value="Doe">
+        </div>
+
+        <div class="input-group">
+          <label for="ageInput">Возраст:</label>
+          <input type="number" id="ageInput" value="30" min="0" max="120">
+        </div>
+
+        <div class="input-group">
+          <label for="salaryInput">Зарплата:</label>
+          <input type="number" id="salaryInput" value="50000" min="0" step="1000">
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn set-random-data">Случайные данные</button>
+        <button class="btn btn-secondary add-computed-property">Добавить вычисляемое свойство</button>
+        <button class="btn btn-success clear-log">Очистить лог</button>
+      </div>
+
+      <div class="grid results">
+        <div class="card">
+          <h4>Полное имя</h4>
+          <div class="display" id="fullName">John Doe</div>
+        </div>
+        
+        <div class="card">
+          <h4>Возрастная категория</h4>
+          <div class="display" id="ageCategory">Взрослый</div>
+        </div>
+        
+        <div class="card">
+          <h4>Годовая зарплата</h4>
+          <div class="display" id="yearlySalary">$60,000</div>
+        </div>
+        
+        <div class="card">
+          <h4>Информация о человеке</h4>
+          <div class="display" id="personInfo">Загрузка...</div>
+        </div>
+      </div>
+
+      <h3>Лог изменений</h3>
+      <div class="log" id="log"></div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Код примера</h2>
+      <div class="code-block">
+        <pre><code id="codeDisplay"></code></pre>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/examples/computed.js"></script>
+</body>
+</html> 

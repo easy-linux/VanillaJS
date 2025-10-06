@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proxy API - Реактивные свойства</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html" class="back-link">← Назад к списку примеров</a>
+    
+    <div class="header">
+      <h1>🔄 Proxy API</h1>
+      <p>Гибкий подход с использованием Proxy для перехвата любых операций с объектом</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Демонстрация</h2>
+      <p>Этот пример показывает, как использовать Proxy для создания реактивного объекта, который отслеживает все изменения свойств.</p>
+      
+      <div class="grid inputs">
+        <div class="input-group">
+          <label for="nameInput">Имя:</label>
+          <input type="text" id="nameInput" value="John">
+        </div>
+
+        <div class="input-group">
+          <label for="ageInput">Возраст:</label>
+          <input type="number" id="ageInput" value="30" min="0" max="120">
+        </div>
+
+        <div class="input-group">
+          <label for="emailInput">Email:</label>
+          <input type="email" id="emailInput" value="john@example.com">
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn set-random-data">Случайные данные</button>
+        <button class="btn btn-secondary add-new-property">Добавить свойство</button>
+        <button class="btn btn-success clear-log">Очистить лог</button>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h4>Текущие данные</h4>
+          <div class="display" id="currentData">Загрузка...</div>
+        </div>
+        
+        <div class="card">
+          <h4>Количество изменений</h4>
+          <div class="display" id="changeCount">0</div>
+        </div>
+      </div>
+
+      <h3>Лог изменений</h3>
+      <div class="log" id="log"></div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Код примера</h2>
+      <div class="code-block">
+        <pre><code id="codeDisplay"></code></pre>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/examples/proxy.js"></script>
+</body>
+</html> 

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Класс Reactive - Реактивные свойства</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html" class="back-link">← Назад к списку примеров</a>
+    
+    <div class="header">
+      <h1>🏗️ Класс Reactive</h1>
+      <p>Полноценная система подписок с классом для управления реактивными значениями</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Демонстрация</h2>
+      <p>Этот пример показывает, как создать полноценную систему реактивности с использованием класса, включая управление подписками и автоматическое уведомление.</p>
+      
+      <div class="input-group">
+        <label for="counterInput">Значение счетчика:</label>
+        <input type="number" id="counterInput" value="0" min="0" max="1000">
+      </div>
+
+      <div class="controls">
+        <button class="btn increment-counter">+1</button>
+        <button class="btn decrement-counter">-1</button>
+        <button class="btn btn-secondary add-subscriber">Добавить подписчика</button>
+        <button class="btn btn-secondary remove-last-subscriber">Удалить последнего</button>
+        <button class="btn btn-success clear-log">Очистить лог</button>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h4>Текущее значение</h4>
+          <div class="display" id="currentValue">0</div>
+        </div>
+        
+        <div class="card">
+          <h4>Количество подписчиков</h4>
+          <div class="display" id="subscriberCount">0</div>
+        </div>
+        
+        <div class="card">
+          <h4>История изменений</h4>
+          <div class="display" id="history">[]</div>
+        </div>
+      </div>
+
+      <h3>Лог изменений</h3>
+      <div class="log" id="log"></div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Код примера</h2>
+      <div class="code-block">
+        <pre><code id="codeDisplay"></code></pre>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/examples/reactive-class.js"></script>
+</body>
+</html> 

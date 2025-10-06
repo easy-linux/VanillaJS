@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Геттеры и сеттеры - Реактивные свойства</title>
+  <link rel="stylesheet" href="common.css">
+  <style>
+    .subscriber-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem;
+      background: #ffffff;
+      border: 1px solid #dee2e6;
+      border-radius: 3px;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .subscriber-info {
+      flex-grow: 1;
+    }
+
+    .subscriber-id {
+      font-weight: 600;
+      color: #495057;
+      font-size: 0.95rem;
+    }
+
+    .subscriber-value {
+      color: #6c757d;
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
+    }
+
+    .remove-subscriber {
+      padding: 0.4rem 0.8rem;
+      background: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.15s ease-in-out;
+    }
+
+    .remove-subscriber:hover {
+      background: #c82333;
+    }
+
+    .remove-subscriber:active {
+      background: #bd2130;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <a href="../index.html" class="back-link">← Назад к списку примеров</a>
+
+    <div class="header">
+      <h1>🔧 Геттеры и сеттеры</h1>
+      <p>Базовый подход с использованием Object.defineProperty() для создания реактивных свойств</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Демонстрация</h2>
+      <p>Этот пример показывает, как создать реактивное свойство с системой подписок, используя геттеры и сеттеры.</p>
+
+      <div class="input-group">
+        <label for="valueInput">Изменить значение:</label>
+        <input type="text" id="valueInput" value="Hello">
+      </div>
+
+      <div class="controls">
+        <button class="btn update-value">Обновить значение</button>
+        <button class="btn add-subscriber">Добавить подписчика</button>
+        <button class="btn remove-subscriber">Удалить подписчика</button>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h4>Текущее значение</h4>
+          <div class="display" id="display">Hello</div>
+        </div>
+
+        <div class="card">
+          <h4>Список подписчиков</h4>
+          <div class="display" id="subscriberList">
+            <div class="subscriber-item">
+              <div class="subscriber-info">
+                <div class="subscriber-id">Основной подписчик</div>
+                <div class="subscriber-value">Hello</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Лог изменений</h3>
+      <div class="log" id="log"></div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Код примера</h2>
+      <div class="code-block">
+        <pre><code id="codeDisplay"></code></pre>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/src/examples/getters-setters.js"></script>
+</body>
+
+</html>

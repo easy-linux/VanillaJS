@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MutationObserver - Реактивные свойства</title>
+  <link rel="stylesheet" href="common.css">
+  <style>
+    .observable-element {
+      border: 2px solid #667eea;
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1rem 0;
+      background: #f8f9fa;
+      min-height: 100px;
+    }
+    
+    .observable-element.changed {
+      border-color: #f093fb;
+      background: #fff5f7;
+      animation: pulse 0.5s ease-in-out;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+    
+    .dom-tree {
+      background: #2d3748;
+      color: #e2e8f0;
+      border-radius: 8px;
+      padding: 1rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    
+    .dom-node {
+      margin-left: 1rem;
+    }
+    
+    .dom-node::before {
+      content: "├─ ";
+      color: #68d391;
+    }
+    
+    .dom-node:last-child::before {
+      content: "└─ ";
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html" class="back-link">← Назад к списку примеров</a>
+    
+    <div class="header">
+      <h1>👁️ MutationObserver</h1>
+      <p>Отслеживание изменений в DOM с помощью MutationObserver API</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Демонстрация</h2>
+      <p>Этот пример показывает, как использовать MutationObserver для отслеживания изменений в DOM элементах.</p>
+      
+      <div class="observable-element" id="observableElement">
+        <h3>Наблюдаемый элемент</h3>
+        <p>Этот элемент отслеживается MutationObserver</p>
+        <span id="counter">0</span>
+      </div>
+      
+      <div class="controls">
+        <button class="btn add-element">Добавить элемент</button>
+        <button class="btn remove-element">Удалить элемент</button>
+        <button class="btn btn-secondary change-attribute">Изменить атрибут</button>
+        <button class="btn btn-secondary change-text">Изменить текст</button>
+        <button class="btn btn-success clear-log">Очистить лог</button>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h4>Количество изменений</h4>
+          <div class="display" id="changeCount">0</div>
+        </div>
+        
+        <div class="card">
+          <h4>Типы изменений</h4>
+          <div class="display" id="changeTypes">Нет изменений</div>
+        </div>
+        
+        <div class="card">
+          <h4>Структура DOM</h4>
+          <div class="dom-tree" id="domTree">Загрузка...</div>
+        </div>
+      </div>
+
+      <h3>Лог изменений</h3>
+      <div class="log" id="log"></div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Код примера</h2>
+      <div class="code-block">
+        <pre><code id="codeDisplay"></code></pre>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/examples/mutation-observer.js"></script>
+</body>
+</html> 

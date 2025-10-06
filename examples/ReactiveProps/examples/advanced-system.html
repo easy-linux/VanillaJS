@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Продвинутая система - Реактивные свойства</title>
+  <link rel="stylesheet" href="common.css">
+  <style>
+    .todo-item {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      background: #ffffff;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .todo-item.completed {
+      background: #f8f9fa;
+      opacity: 0.7;
+    }
+    
+    .todo-item.completed .todo-text {
+      text-decoration: line-through;
+      color: #6c757d;
+    }
+    
+    .todo-text {
+      flex-grow: 1;
+      margin: 0 0.75rem;
+    }
+    
+    .delete-btn {
+      background: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1;
+    }
+    
+    .delete-btn:hover {
+      background: #c82333;
+    }
+
+    .replace-btn {
+      background: transparent ;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 1;
+      margin-right: 10px;;
+    }
+    
+    .replace-btn:hover {
+      background: transparent;
+    }
+    
+    .filter-buttons {
+      display: flex;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+    
+    .filter-btn {
+      padding: 0.5rem 1rem;
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s ease-in-out;
+    }
+    
+    .filter-btn.active {
+      background: #667eea;
+      color: white;
+      border-color: #667eea;
+    }
+    
+    .filter-btn:hover {
+      background: #e9ecef;
+    }
+    
+    .filter-btn.active:hover {
+      background: #5a67d8;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .stat-item {
+      text-align: center;
+      padding: 1rem;
+      background: #f8f9fa;
+      border-radius: 4px;
+      border: 1px solid #dee2e6;
+    }
+    
+    .stat-label {
+      display: block;
+      font-size: 0.875rem;
+      color: #6c757d;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-value {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #495057;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🚀 Продвинутая система</h1>
+      <p>Todo приложение с использованием всех подходов к реактивности.</p>
+    </header>
+
+    <div class="demo-section">
+      <h2>Демонстрация</h2>
+      
+      <div class="input-group">
+        <label for="newTodoInput">Новая задача:</label>
+        <input type="text" id="newTodoInput" placeholder="Введите задачу...">
+        <button class="btn" data-action="addTodo">Добавить</button>
+      </div>
+
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-action="setFilter" data-filter="all">Все</button>
+        <button class="filter-btn" data-action="setFilter" data-filter="active">Активные</button>
+        <button class="filter-btn" data-action="setFilter" data-filter="completed">Выполненные</button>
+        <button class="btn" data-action="clearCompleted">Очистить выполненные</button>
+      </div>
+
+      <div class="display-area">
+        <div class="card">
+          <h3>Статистика</h3>
+          <div id="statsDisplay" class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-label">Всего:</span>
+              <span class="stat-value">3</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Активных:</span>
+              <span class="stat-value">2</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Выполнено:</span>
+              <span class="stat-value">1</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Прогресс:</span>
+              <span class="stat-value">33%</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h3>Список задач</h3>
+          <div id="todoList">
+            <!-- Todo items will be dynamically generated -->
+          </div>
+        </div>
+      </div>
+
+      <div class="log-section">
+        <h3>Лог изменений</h3>
+        <div class="log" id="log"></div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Код примера</h2>
+      <div class="code-block">
+        <pre><code id="codeDisplay"></code></pre>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src='/src/examples/advanced-system.js'></script>
+</body>
+</html> 
