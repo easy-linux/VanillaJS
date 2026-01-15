@@ -10,8 +10,17 @@ export function App() {
 
     // Или с использованием JSX
     return html`<div>
-    <h1>Мой мини-React</h1>
-    <${Counter} />
+        <h1>Fiber-реализация: Множественные экземпляры компонента</h1>
+         <${Counter} />
+         <${Counter} />
+         <div>
+           <${Counter} />
+           <div>
+            <${Counter} />
+            <p>Вложенный счётчик</p>
+            <div><${Counter} /></div>
+           </div>
+         </div>
     </div>`
 }
 
